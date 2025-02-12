@@ -145,3 +145,4 @@ Temporary Items
 .project
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,java,eclipse,git
+/build/
