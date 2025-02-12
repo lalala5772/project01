@@ -1,7 +1,3 @@
-![Auto Assign](https://github.com/kdt-proj1-team/demo-repository/actions/workflows/auto-assign.yml/badge.svg)
-
-![Proof HTML](https://github.com/kdt-proj1-team/demo-repository/actions/workflows/proof-html.yml/badge.svg)
-
 # Team Project 연습용 Repository
 이곳의 각자의 브랜치를 만들어서 CLI로 코드를 커밋하고 main으로 pull request 날려주세요
 ### 종훈: feature/board1
