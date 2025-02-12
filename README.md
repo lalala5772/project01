@@ -9,6 +9,7 @@
 ### 동엽: feature/admin-dashboard1
 ### 미랑: feature/admin-dashboard2
 ### 찬영: feature/mypage
+### 미르: feature/login
 브랜치 생성 후, 해당 브랜치에 파일 작성 후 add-commit-push 부탁드립니다.
 push 후 main으로(master 아님) pull request 보내주세요.
 
