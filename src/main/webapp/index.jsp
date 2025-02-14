@@ -1,506 +1,216 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<%
-// JSP 내장 객체 session을 바로 사용
-// 로그인 후 반환받은 username 객체를 받을 수 있음
-String username = (String)session.getAttribute("username");
-
-String status = request.getParameter("status");
-%>
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="ko">
-
-
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>넥슨</title>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.css" />
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 
-<style>
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>BoardProject</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+	<meta name="author" content="FREEHTML5.CO" />
 
-body {
-	font-family: 'Arial', sans-serif;
-	background-color: #f5f5f5;
-}
+  	
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
 
-#wrapper {
-	width: 100%;
-	max-width: 1920px;
-	margin: 0 auto;
-}
-
-/* 헤더 스타일 */
-.header {
-	width: 100%;
-	background-color: #1a1a1a;
-	padding: 20px 0;
-	border-bottom: 1px solid #333;
-}
-
-.header-container {
-	max-width: 1200px;
-	margin: 0 auto;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 0 20px;
-}
-
-.header-nav {
-	display: flex;
-	gap: 30px;
-}
-
-.header-nav a {
-	color: white;
-	text-decoration: none;
-	font-size: 16px;
-}
-
-/* Swiper 배너 영역 */
-.swiper {
-	width: 100%;
-	height: 480px;
-}
-
-.swiper-slide {
-	position: relative;
-}
-
-.swiper-slide img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-}
-
-.slide-content {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background: rgba(0, 0, 0, 0.7);
-	color: white;
-	padding: 20px;
-}
-
-.slide-content h2 {
-	font-size: 24px;
-	margin-bottom: 10px;
-}
-
-.slide-content p {
-	font-size: 16px;
-}
-
-/* 로그인과 추천게임 컨테이너 */
-.main-content-wrapper {
-	max-width: 1200px;
-	margin: 20px auto;
-	display: flex;
-	gap: 20px;
-	padding: 0 20px;
-}
-
-/* 로그인 영역 */
-.login-section {
-	width: 300px;
-	padding: 20px;
-	border: 1px solid #ddd;
-	background: white;
-}
-
-.login-container {
-	display: flex;
-	flex-direction: column;
-}
-
-.login-main {
-	margin-bottom: 20px;
-}
-
-.login-button, .login-input>.login-button {
-	display: block;
-	width: 100%;
-	padding: 12px;
-	background: #1a1a1a;
-	color: white;
-	text-align: center;
-	margin-bottom: 10px;
-	text-decoration: none;
-	border-radius: 4px;
-}
-
-/* 로그인 필드 추가 - 미르 */
-.login-input-field {
-	/* width: 320px; */
-	/* width: 100%; */
-	/* padding: 30px; */
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico">
 	
-}
+	<!-- Google Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Monsterrat:400,700|Merriweather:400,300italic,700' rel='stylesheet' type='text/css'>
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Magnific Popup-->
+	<link rel="stylesheet" href="css/magnific-popup.css">
+	<!-- Owl Carousel -->
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	
+	<!-- Cards -->
+	<link rel="stylesheet" href="css/cards.css">
 
-.login-field {
-	padding: 20px 0px;
-	width: 300px;
-	position: relative;
-}
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
 
-.login-icon {
-	position: absolute;
-	top: 30px;
-	color: #7875B5;
-}
-
-.login-input {
-	border: none;
-	border-bottom: 2px solid #D1D1D4;
-	background: none;
-	padding: 10px;
-	padding-left: 24px;
-	font-weight: 700;
-	width: 75%;
-	transition: .2s;
-}
-
-.login-input:active, .login-input:focus, .login-input:hover {
-	outline: none;
-	border-bottom-color: #6A679E;
-}
-
-/* 추천게임 영역 */
-.myInfo {
-	flex: 1;
-	padding: 20px;
-	border: 1px solid #ddd;
-	background: white;
-}
-
-.title {
-	margin-bottom: 20px;
-	border-bottom: 1px solid #ddd;
-	padding-bottom: 10px;
-}
-
-.recommendGame {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 20px;
-}
-
-.game-card {
-	border: 1px solid #ddd;
-	padding: 10px;
-	background: white;
-}
-
-.game-card img {
-	width: 100%;
-	height: 200px;
-	object-fit: cover;
-}
-
-/* 전체게임 영역 */
-#allGame {
-	width: 100%;
-	max-width: 1200px;
-	margin: 0 auto 40px;
-	padding: 20px;
-	border: 1px solid #ddd;
-	background: white;
-}
-
-.game-grid {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 20px;
-	margin-top: 20px;
-}
-
-/* 푸터 */
-.footer {
-	width: 100%;
-	background: #1a1a1a;
-	color: #999;
-	padding: 40px 0;
-}
-
-.footer-container {
-	max-width: 1200px;
-	margin: 0 auto;
-	padding: 0 20px;
-}
-
-.footer-links {
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 30px;
-}
-
-.footer-column {
-	flex: 1;
-}
-
-.footer-column h3 {
-	color: white;
-	margin-bottom: 15px;
-}
-
-.footer-column ul {
-	list-style: none;
-}
-
-.footer-column ul li {
-	margin-bottom: 10px;
-}
-
-.footer-column a {
-	color: #999;
-	text-decoration: none;
-}
-
-.footer-bottom {
-	border-top: 1px solid #333;
-	padding-top: 20px;
-	text-align: center;
-}
-</style>
-</head>
-
-<body>
-	<c:if test="${not empty signupSuccess}">
-		<script>
-        alert("${signupSuccess}");
-    </script>
-	</c:if>
-
-	<div id="wrapper">
-		<!-- 헤더 -->
-		<header class="header">
-			<div class="header-container">
-				<h1 style="color: white;">NEXON</h1>
-				<nav class="header-nav">
-					<a href="#">PC</a> <a href="#">모바일</a> <a href="list.board?cpage=1">회원게시판</a>
-					<a href="#">고객센터</a>
-				</nav>
-			</div>
-		</header>
-
-		<!-- Swiper 배너 -->
-		<div class="swiper">
-			<div class="swiper-wrapper">
-				<div class="swiper-slide">
-					<img src="https://picsum.photos/1920/480" alt="배너 1">
-					<div class="slide-content">
-						<h2>메이플스토리</h2>
-						<p>새로운 업데이트와 함께 찾아온 신규 컨텐츠를 만나보세요!</p>
-					</div>
+	</head>
+	<body>
+	
+	<div id="fh5co-page">
+		<nav class="fh5co-nav-style-1" role="navigation" data-offcanvass-position="fh5co-offcanvass-left">
+			<div class="container">
+				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 fh5co-logo">
+					<a href="#" class="js-fh5co-mobile-toggle fh5co-nav-toggle"><i></i></a>
+					<a href="#">Lee JH</a>
 				</div>
-				<div class="swiper-slide">
-					<img src="https://picsum.photos/1920/480" alt="배너 2">
-					<div class="slide-content">
-						<h2>던전앤파이터</h2>
-						<p>새로운 캐릭터 업데이트! 지금 바로 만나보세요.</p>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<img src="https://picsum.photos/1920/480" alt="배너 3">
-					<div class="slide-content">
-						<h2>FIFA ONLINE 4</h2>
-						<p>신규 시즌 업데이트! 새로운 선수들과 함께하세요.</p>
-					</div>
-				</div>
-			</div>
-			<div class="swiper-pagination"></div>
-			<div class="swiper-button-next"></div>
-			<div class="swiper-button-prev"></div>
-		</div>
-
-		<!-- 메인 콘텐츠 -->
-		<div class="main-content-wrapper">
-			<!-- 추천 게임 -->
-			<div class="myInfo">
-				<div class="title">
-					<h2>추천게임</h2>
-				</div>
+				<div class="col-lg-6 col-md-5 col-sm-5 text-center fh5co-link-wrap">
+					<ul data-offcanvass="yes">
+						<li class="active"><a href="#">소개</a></li>
+						<li><a href="/list.board?cpage=1">자유게시판</a></li>
+						<li><a href="#">빈칸</a></li>
+						<li><a href="#">빈칸</a></li>
+					</ul>
+				</div> 
 				
-				<div class="recommendGame">
-					<div class="game-card">
-						<a href="game1.jsp"> <img src="https://picsum.photos/285/200"
-							alt="게임 1">
-						</a>
-					</div>
-					<div class="game-card">
-						<a href="game2.jsp"> <img src="https://picsum.photos/285/200"
-							alt="게임 2">
-						</a>
-					</div>
-					<div class="game-card">
-						<a href="game3.jsp"> <img src="https://picsum.photos/285/200"
-							alt="게임 3">
-						</a>
-					</div>
-					<div class="game-card">
-						<a href="game4.jsp"> <img src="https://picsum.photos/285/200"
-							alt="게임 4">
-						</a>
-					</div>
+		<c:choose>
+		<c:when test="${loginID != null}">
+			
+				<div class="col-lg-3 col-md-4 col-sm-4 text-right fh5co-link-wrap">
+					<ul class="fh5co-special" data-offcanvass="yes">
+						<li class="loginName">${loginID}님 환영합니다.</li>
+						<li><a href="/signOust.members">Logout</a></li>
+						<li><a href="/myPage.members" class="call-to-action">My Page</a></li>
+					</ul>
 				</div>
-
+		
+		</c:when>
+		<c:otherwise>
+		
+				<div class="col-lg-3 col-md-4 col-sm-4 text-right fh5co-link-wrap">
+					<ul class="fh5co-special" data-offcanvass="yes">
+						<li><a href="/loginbox.jsp">Login</a></li>
+						
+					</ul>
+				</div>
+		
+		</c:otherwise>
+		</c:choose>
+				
 			</div>
+		</nav>
 
-			<!-- 로그인 섹션 -->
-			<div class="login-section">
-				<div class="login-container">
-					<!-- session username기록 있을 경우 (login되어 있을 경우) -->
-					<!-- 로그인 성공 메시지 -->
 
-					<% if (username != null) { %>
-					<div class="mb-4">
-						<h3><%= username %>님 안녕하세요!
-						</h3>
-						<p>로그인에 성공했습니다.</p>
-						<a href="/logout.members"><button>로그아웃</button></a>
-						<!-- 로그아웃 버튼 -->
-					</div>
-				</div>
-				<% } else { %>
-				<div class="login-main">
-					<h2 style="margin-bottom: 20px;">로그인</h2>
-					<form class="login-input-field" action="/login.members"
-						method="post">
-						<div class="login-field">
-							<i class="login-icon fas fa-user"></i> <input type="text"
-								class="login-input" name="id" placeholder="User name / Email"
-								required>
+		<div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-stellar-background-ratio="0.5" data-next="yes"  style="background-image: url(images/full_1.jpg);">
+		  	<span class="scroll-btn wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.4s">
+				<a href="#">
+					<span class="mouse"><span></span></span>
+				</a>
+			</span>
+			<div class="fh5co-overlay"></div>
+			<div class="fh5co-cover-text">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-push-6 col-md-6 full-height js-full-height">
+							<div class="fh5co-cover-intro">
+								<h1 class="cover-text-lead wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">BoardProject</h1>
+								<h2 class="cover-text-sublead wow fadeInUp" data-wow-duration="1s" data-wow-delay=".8s">로그인,로그아웃,마이페이지,게시판 등등...</h2>
+								<p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.1s"><a href="/list.board?cpage=1" class="btn btn-primary btn-outline btn-lg">자유게시판</a></p>
+							</div>
 						</div>
-						<div class="login-field">
-							<i class="login-icon fas fa-lock"></i> <input type="password"
-								class="login-input" name="passwd" placeholder="Password"
-								required>
-						</div>
-						<input type="submit" value="로그인 하기" class="login-button">
-					</form>
-					<a href="#" class="login-button" style="background: #4285f4;">Google
-						로그인</a> <a href="#" class="login-button" style="background: #3b5998;">Facebook로그인</a>
-				</div>
-				<div class="login-options">
-					<h3 style="margin-bottom: 15px;">빠른 메뉴</h3>
-					<a href="#" style="display: block; margin-bottom: 10px;">ID 찾기</a>
-					<a href="#" style="display: block; margin-bottom: 10px;">비밀번호
-						찾기</a> <a href="members/signup.jsp" style="display: block;">회원가입</a>
-				</div>
-				<% } %>
-			</div>
-
-		</div>
-	</div>
-	</div>
-
-	<!-- 전체 게임 -->
-	<div id="allGame">
-		<h2>전체게임</h2>
-		<div class="game-grid">
-			<div class="game-card">
-				<img src="https://picsum.photos/285/200" alt="게임 1">
-			</div>
-			<div class="game-card">
-				<img src="https://picsum.photos/285/200" alt="게임 2">
-			</div>
-			<div class="game-card">
-				<img src="https://picsum.photos/285/200" alt="게임 3">
-			</div>
-			<div class="game-card">
-				<img src="https://picsum.photos/285/200" alt="게임 4">
-			</div>
-			<div class="game-card">
-				<img src="https://picsum.photos/285/200" alt="게임 5">
-			</div>
-			<div class="game-card">
-				<img src="https://picsum.photos/285/200" alt="게임 6">
-			</div>
-			<div class="game-card">
-				<img src="https://picsum.photos/285/200" alt="게임 7">
-			</div>
-			<div class="game-card">
-				<img src="https://picsum.photos/285/200" alt="게임 8">
+					</div>
+				</div>	
 			</div>
 		</div>
-	</div>
 
-	<!-- 푸터 -->
-	<footer class="footer">
-		<div class="footer-container">
-			<div class="footer-links">
-				<div class="footer-column">
-					<h3>회사소개</h3>
-					<ul>
-						<li><a href="#">넥슨 소개</a></li>
-						<li><a href="#">연혁</a></li>
-						<li><a href="#">채용안내</a></li>
-					</ul>
+		
+	
+
+		
+
+					
+					
+					
+					
+						
+
+					<div class="clearfix visible-sm-block"></div>
+
 				</div>
-				<div class="footer-column">
-					<h3>고객지원</h3>
-					<ul>
-						<li><a href="#">고객센터</a></li>
-						<li><a href="#">보안센터</a></li>
-						<li><a href="#">PC방 찾기</a></li>
-					</ul>
+			</div>	
+		</div>
+			
+		<div class="fh5co-footer-style-3">
+			<div class="container">
+				<div class="row p-b">
+					<div class="col-md-3 col-sm-6 fh5co-footer-widget wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">
+						<div class="fh5co-logo"><span class="logo">L</span> Lee JH</div>
+						<p class="fh5co-copyright">&copy; 2025 L-JH <br>All Rights Reserved. <br> </p>
+					</div>
+					<div class="col-md-3 col-sm-6 fh5co-footer-widget wow fadeInUp" data-wow-duration="1s" data-wow-delay=".8s">
+						<h3>footer 기능 1</h3>
+						<ul class="fh5co-links">
+							<li><a href="#">기능구현1</a></li>
+							<li><a href="#">기능구현2</a></li>
+							<li><a href="#">기능구현3</a></li>
+							<li><a href="#">기능구현4</a></li>
+							<li><a href="#">기능구현5</a></li>
+							<li><a href="#">기능구현6</a></li>
+						</ul>
+					</div>
+					<div class="clearfix visible-sm-block"></div>
+					<div class="col-md-3 col-sm-6 fh5co-footer-widget wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.1s">
+						<h3>Connect</h3>
+						<ul class="fh5co-links fh5co-social">
+							<li><a href="https://www.facebook.com/"><i class="icon icon-facebook2"></i> Facebook</a></li>
+							<li><a href="https://x.com/"><i class="icon icon-twitter"></i> Twitter</a></li>
+							<li><a href="https://www.instagram.com/"><i class="icon icon-instagram"></i> Instagram</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3 col-sm-6 fh5co-footer-widget wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.4s">
+						<h3>About</h3>
+						<p>정보</p>
+						
+					</div>
+					<div class="clearfix visible-sm-block"></div>
 				</div>
-				<div class="footer-column">
-					<h3>정책</h3>
-					<ul>
-						<li><a href="#">이용약관</a></li>
-						<li><a href="#">개인정보처리방침</a></li>
-						<li><a href="#">청소년보호정책</a></li>
-					</ul>
+				<div class="row fh5co-made">
+					<div class="col-md-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">
+						
+					</div>
 				</div>
-			</div>
-			<div class="footer-bottom">
-				<p>© NEXON Korea Corporation All Rights Reserved.</p>
 			</div>
 		</div>
-	</footer>
+		<!-- END footer -->
+		
 	</div>
+	<!-- END page-->
 
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+   <script src="js/jquery.waypoints.min.js"></script>
+	<!-- Owl Carousel -->
+	<script src="js/owl.carousel.min.js"></script>
+	<!-- Magnific Popup -->
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<!-- Stellar -->
+	<script src="js/jquery.stellar.min.js"></script>
+	<!-- countTo -->
+	<script src="js/jquery.countTo.js"></script>
+	<!-- WOW -->
+	<script src="js/wow.min.js"></script>
 	<script>
-		new Swiper('.swiper', {
-			loop : true,
-			autoplay : {
-				delay : 3000,
-				disableOnInteraction : false,
-			},
-			pagination : {
-				el : '.swiper-pagination',
-				clickable : true,
-			},
-			navigation : {
-				nextEl : '.swiper-button-next',
-				prevEl : '.swiper-button-prev',
-			},
-		});
-		
-		
-		//login 실패 시 출력 
-        <% if ("fail".equals(status)) { %>
-            alert("로그인에 실패했습니다. 다시 시도하세요.");
-        <% } else if ("error".equals(status)) { %>
-            alert("오류가 발생했습니다. 관리자에게 문의하세요.");
-        <% } %>
+		new WOW().init();
 	</script>
-</body>
+	<!-- Main -->
+	<script src="js/main.js"></script>
 
+	</body>
 </html>
